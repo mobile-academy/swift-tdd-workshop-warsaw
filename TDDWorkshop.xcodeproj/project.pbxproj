@@ -59,9 +59,18 @@
 		51043FF50D487EE58AB2ECC9 /* StreamItemTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51043DF90B2B0152DF6FF46B /* StreamItemTransformer.swift */; };
 		810861B62FF9CB3D6893CE9B /* PollViewController+FormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086F77015C685EDB582D0F /* PollViewController+FormConfiguration.swift */; };
 		810861B71F0EC48F748F4ABD /* PollViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108664EF2815E24CD31586B /* PollViewControllerSpec.swift */; };
+		8108627D6A2EA99825B06EDF /* PollValidatorFactoryFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810861987F271654FF38EB91 /* PollValidatorFactoryFake.swift */; };
 		810865DC3074BBDDF5460F5B /* PollViewController+SpecHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086F7BC1AE3DEBF4D2A1A7 /* PollViewController+SpecHelpers.swift */; };
 		810866451A2E1C7800E9DE31 /* PollContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086F39CC321F715407E333 /* PollContracts.swift */; };
+		81086A78DB5554C5BD6C03AD /* CharactersMinimalCountValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810869F762903B060661EA8D /* CharactersMinimalCountValidator.swift */; };
+		81086B21EFA30AF9DA521266 /* ValidatorsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086AED059F8BE5AB722832 /* ValidatorsSpec.swift */; };
+		81086B5F29F49D4EB365F092 /* IllegalSymbolsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108638C7D7AD4964BA4FF86 /* IllegalSymbolsValidator.swift */; };
+		81086C15404671AB14B049FB /* ValidatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810860116D4525C6A54DDD2E /* ValidatorFactory.swift */; };
+		81086C730F65D0A0F47FF515 /* ValidatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086989D16B80F5E01451A3 /* ValidatorType.swift */; };
 		81086C7668472F534DC0F3CE /* PollManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810867FBB00ADC3DAEDCCF91 /* PollManagerFake.swift */; };
+		81086CC6C39BE86684E9844E /* ValidatorFactorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810860652E03E5D557B912F8 /* ValidatorFactorySpec.swift */; };
+		81086D8215E1B3EE8D11A484 /* PollValidatorFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108602D618C79F180B5B5F3 /* PollValidatorFake.swift */; };
+		81086EFED76D0E9AEDAF2E8C /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086F348C727C0A0F71F0FC /* EmailValidator.swift */; };
 		81DC540A880D1280C51754B0 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C13977E91D5A6246EC94A4 /* Pods.framework */; };
 		86F2B4061BFD372D00AACB4C /* AgendaItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2B4051BFD372D00AACB4C /* AgendaItemCell.swift */; };
 		94DCC8121BFA570B00ABEF01 /* Poll.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94DCC8101BFA570B00ABEF01 /* Poll.storyboard */; };
@@ -147,8 +156,17 @@
 		51043F2BE2E9D941A49D7CA8 /* UIRefreshControlFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRefreshControlFake.swift; sourceTree = "<group>"; };
 		51043F3546921619F45D7FEE /* StreamItemUploaderFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamItemUploaderFake.swift; sourceTree = "<group>"; };
 		51043F88A84283ECD6996069 /* Configurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
+		810860116D4525C6A54DDD2E /* ValidatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorFactory.swift; sourceTree = "<group>"; };
+		8108602D618C79F180B5B5F3 /* PollValidatorFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollValidatorFake.swift; sourceTree = "<group>"; };
+		810860652E03E5D557B912F8 /* ValidatorFactorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorFactorySpec.swift; sourceTree = "<group>"; };
+		810861987F271654FF38EB91 /* PollValidatorFactoryFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollValidatorFactoryFake.swift; sourceTree = "<group>"; };
+		8108638C7D7AD4964BA4FF86 /* IllegalSymbolsValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllegalSymbolsValidator.swift; sourceTree = "<group>"; };
 		8108664EF2815E24CD31586B /* PollViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollViewControllerSpec.swift; sourceTree = "<group>"; };
 		810867FBB00ADC3DAEDCCF91 /* PollManagerFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollManagerFake.swift; sourceTree = "<group>"; };
+		81086989D16B80F5E01451A3 /* ValidatorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorType.swift; sourceTree = "<group>"; };
+		810869F762903B060661EA8D /* CharactersMinimalCountValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersMinimalCountValidator.swift; sourceTree = "<group>"; };
+		81086AED059F8BE5AB722832 /* ValidatorsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorsSpec.swift; sourceTree = "<group>"; };
+		81086F348C727C0A0F71F0FC /* EmailValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		81086F39CC321F715407E333 /* PollContracts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollContracts.swift; sourceTree = "<group>"; };
 		81086F77015C685EDB582D0F /* PollViewController+FormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PollViewController+FormConfiguration.swift"; sourceTree = "<group>"; };
 		81086F7BC1AE3DEBF4D2A1A7 /* PollViewController+SpecHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PollViewController+SpecHelpers.swift"; sourceTree = "<group>"; };
@@ -240,6 +258,8 @@
 				1EDB8F9E0A67EFE8740874D4 /* AgendaProviderFake.swift */,
 				1EDB874474DA5D4CF5A3AD8B /* UITableViewFake.swift */,
 				810867FBB00ADC3DAEDCCF91 /* PollManagerFake.swift */,
+				8108602D618C79F180B5B5F3 /* PollValidatorFake.swift */,
+				810861987F271654FF38EB91 /* PollValidatorFactoryFake.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -264,6 +284,7 @@
 				8108664EF2815E24CD31586B /* PollViewControllerSpec.swift */,
 				81086F39CC321F715407E333 /* PollContracts.swift */,
 				81086F7BC1AE3DEBF4D2A1A7 /* PollViewController+SpecHelpers.swift */,
+				81086FE57D1A474810A6EFB7 /* Validation */,
 			);
 			path = Poll;
 			sourceTree = "<group>";
@@ -363,6 +384,28 @@
 				DB38C724F8850303F0A99848 /* Pods-TDDWorkshopTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		810865C28734ED0712364C2D /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				8108638C7D7AD4964BA4FF86 /* IllegalSymbolsValidator.swift */,
+				810869F762903B060661EA8D /* CharactersMinimalCountValidator.swift */,
+				81086F348C727C0A0F71F0FC /* EmailValidator.swift */,
+				81086AED059F8BE5AB722832 /* ValidatorsSpec.swift */,
+			);
+			path = Validators;
+			sourceTree = "<group>";
+		};
+		81086FE57D1A474810A6EFB7 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				81086989D16B80F5E01451A3 /* ValidatorType.swift */,
+				810860116D4525C6A54DDD2E /* ValidatorFactory.swift */,
+				810865C28734ED0712364C2D /* Validators */,
+				810860652E03E5D557B912F8 /* ValidatorFactorySpec.swift */,
+			);
+			path = Validation;
 			sourceTree = "<group>";
 		};
 		A162F14B1BEA992400262528 = {
@@ -714,6 +757,11 @@
 				1EDB8BD9E433436CEBF83EAE /* AgendaItem.swift in Sources */,
 				1EDB8E6D471D2514A3B408C7 /* AgendaProvider.swift in Sources */,
 				810861B62FF9CB3D6893CE9B /* PollViewController+FormConfiguration.swift in Sources */,
+				81086C730F65D0A0F47FF515 /* ValidatorType.swift in Sources */,
+				81086C15404671AB14B049FB /* ValidatorFactory.swift in Sources */,
+				81086B5F29F49D4EB365F092 /* IllegalSymbolsValidator.swift in Sources */,
+				81086A78DB5554C5BD6C03AD /* CharactersMinimalCountValidator.swift in Sources */,
+				81086EFED76D0E9AEDAF2E8C /* EmailValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,6 +796,10 @@
 				1EDB8A916CF1970092D51CC8 /* AgendaProviderSpec.swift in Sources */,
 				81086C7668472F534DC0F3CE /* PollManagerFake.swift in Sources */,
 				810865DC3074BBDDF5460F5B /* PollViewController+SpecHelpers.swift in Sources */,
+				81086D8215E1B3EE8D11A484 /* PollValidatorFake.swift in Sources */,
+				8108627D6A2EA99825B06EDF /* PollValidatorFactoryFake.swift in Sources */,
+				81086CC6C39BE86684E9844E /* ValidatorFactorySpec.swift in Sources */,
+				81086B21EFA30AF9DA521266 /* ValidatorsSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

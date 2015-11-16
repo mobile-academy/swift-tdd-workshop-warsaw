@@ -50,10 +50,7 @@ struct Poll {
     }
 
     func toJSON() -> [String:AnyObject]? {
-        guard let name = self.name else {
-            return nil
-        }
-        guard let email = self.email else {
+        guard let name = name, let email = email, let comments = comments else {
             return nil
         }
         return [

@@ -6,6 +6,7 @@
 import Foundation
 import Quick
 import Nimble
+import Eureka
 
 @testable
 import TDDWorkshop
@@ -37,6 +38,9 @@ class PollViewControllerSpec: QuickSpec {
                 expect(sut.pollManager).toNot(beNil())
             }
 
+            it("should validator factory") {
+                expect(sut.validatorFactory).toNot(beNil())
+            }
         }
 
         describe("behavior") {
@@ -104,6 +108,25 @@ class PollViewControllerSpec: QuickSpec {
                     expect(sut.navigationItem.rightBarButtonItem).to(beNil())
                 }
 
+            }
+        }
+
+        describe("validation factory usage for name") {
+            var factory: ValidationFactoryFake!
+            var validator: ValidatorFake!
+
+            beforeEach {
+                validator = ValidatorFake()
+                factory = ValidationFactoryFake(validator: validator)
+                sut.validatorFactory = factory
+                sut.loadView()
+                sut.viewDidLoad()
+
+                sut.simulateTextInput(forRowWithType: .Text, text: "the string")
+            }
+
+            it("should validate text with proper validator") {
+                expect(validator.didCallValidateText).to(beTrue())
             }
         }
     }

@@ -25,6 +25,7 @@ class PollViewController: FormViewController {
 
     var pollManager: PollSender? = PollManager()
     var pollBuilder: PollBuilder? = PollBuilder()
+    var validatorFactory: ValidatorFactoryType? = ValidatorFactory()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -33,13 +34,20 @@ class PollViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let pollBuilder = pollBuilder else {
+        guard let pollBuilder = pollBuilder, let validatorFactory = validatorFactory else {
             return
         }
 
-        let validators = [ValidationFieldType.Text: ValidationContext(validator: validateText, message: "Invalid characters"),
-                          ValidationFieldType.Comment: ValidationContext(validator: validateComment, message: "Your comment is too short"),
-                          ValidationFieldType.Email: ValidationContext(validator: validateEmail, message: "Invalid email format")]
+        let buildContext = {
+            (key: ValidationFieldType) -> ValidationContext in
+            let validator = validatorFactory.validatorForKey(key)!
+            return ValidationContext(validator: validator.validateText, message: validator.validationFailMessage())
+        }
+
+        let validators = [
+                ValidationFieldType.Text: buildContext(ValidationFieldType.Text),
+                ValidationFieldType.Comment: buildContext(ValidationFieldType.Comment),
+                ValidationFieldType.Email: buildContext(ValidationFieldType.Email)]
 
         configureGeneralSection(validators, pollBuilder: pollBuilder)
         configureAgendaSections(sections, validators: validators, pollBuilder: pollBuilder)
@@ -96,45 +104,5 @@ class PollViewController: FormViewController {
         let alert = UIAlertController(title: "Error", message: "Can't send poll.\nFields with * are required.", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
         presentViewController(alert, animated: true, completion: nil)
-    }
-
-    // MARK: Validation
-
-    // TODO: Extract and test validation logic (to make it more reusable and reliable).
-    // Hint 1: Create common Validator protocol
-    // Hint 2: Create different validators (comment, email, etc.)
-    // Hint 3: Create validators factory (remember about tests)
-    // Hint 4: To simulate input on form cell use this code: `simulateTextInput(foforRowWithType:text:)` where type is `ValidationFieldType`.
-    //          E.g.: simulateTextInput(forRowWithType: .Text, text: "fixture string")
-
-    func validateComment(comment: String?) -> Bool {
-        guard let comment = comment where !comment.isEmpty else {
-            return false
-        }
-        return comment.characters.count > 10
-    }
-
-    func validateEmail(email: String?) -> Bool {
-        guard let email = email where !email.isEmpty else {
-            return false
-        }
-        let pattern = "[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}"
-        let regex = NSPredicate(format: "SELF MATCHES %@", pattern)
-        return regex.evaluateWithObject(email)
-    }
-
-    func validateText(text: String?) -> Bool {
-        guard let text = text where !text.isEmpty else {
-            return false
-        }
-        return [
-                NSCharacterSet.illegalCharacterSet(),
-                NSCharacterSet.symbolCharacterSet(),
-                NSCharacterSet.punctuationCharacterSet(),
-                NSCharacterSet.nonBaseCharacterSet(),
-                NSCharacterSet.controlCharacterSet(),
-        ].reduce(true) {
-            $0 || text.rangeOfCharacterFromSet($1) != nil
-        }
     }
 }
