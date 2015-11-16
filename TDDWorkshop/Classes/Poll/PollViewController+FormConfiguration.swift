@@ -123,7 +123,7 @@ extension PollViewController {
     func showInvalidValueAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        presentViewController(alert, animated: true, completion: nil)
     }
 
 }

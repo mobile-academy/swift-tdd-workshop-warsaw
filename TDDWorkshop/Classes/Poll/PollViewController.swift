@@ -6,8 +6,6 @@
 //  Copyright © 2015 Mobile Academy. All rights reserved.
 //
 
-// TODO 1: Add spec file for PollViewController
-
 import UIKit
 import Eureka
 
@@ -24,7 +22,9 @@ struct ValidationContext {
 
 class PollViewController: FormViewController {
     let sections = ["Intro", "Testing techniques", "Red Green Refactor", "Working with Legacy Code"]
-    var pollBuilder: PollBuilder = PollBuilder()
+
+    var pollManager: PollSender? = PollManager()
+    var pollBuilder: PollBuilder? = PollBuilder()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -33,6 +33,9 @@ class PollViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let pollBuilder = pollBuilder else {
+            return
+        }
 
         let validators = [ValidatorType.Text: ValidationContext(validator: validateText, message: "Invalid characters"),
                           ValidatorType.Comment: ValidationContext(validator: validateComment, message: "Your comment is too short"),
@@ -42,17 +45,20 @@ class PollViewController: FormViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
-        // TODO 2: Write test that checks whether `rightBarButtonItem` is being set correctly depending on `pollAlreadySent` flag.
-        // Then, think what else could be tested for this class.
-        self.navigationItem.rightBarButtonItem =
-                PollManager.sharedInstance.pollAlreadySent
+        guard let pollManager = pollManager else {
+            return
+        }
+
+        // Think what else could be tested for this class.
+        navigationItem.rightBarButtonItem =
+                pollManager.isPollAlreadySent()
                 ? nil
                 : UIBarButtonItem(title: "Send", style: .Plain, target: self, action: "didTapSend")
 
     }
 
     func didTapSend() {
-        guard pollBuilder.isValid() else {
+        guard let pollBuilder = pollBuilder where pollBuilder.isValid() else {
             showInvalidPollAlert()
             return
         }
@@ -68,13 +74,17 @@ class PollViewController: FormViewController {
         alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
         alert.preferredAction = sendAction
 
-        self.presentViewController(alert, animated: true, completion: nil)
+        presentViewController(alert, animated: true, completion: nil)
     }
 
     func sendPoll() {
-        let poll = self.pollBuilder.poll()
-        PollManager.sharedInstance.sendPoll(poll) {
-            [weak self] success in
+        guard let pollManager = pollManager, let pollBuilder = pollBuilder else {
+            return
+        }
+
+        let poll = pollBuilder.poll()
+        pollManager.sendPoll(poll) {
+            [weak self] success, error in
             if success {
                 self?.navigationItem.setRightBarButtonItem(nil, animated: true)
             }
@@ -84,7 +94,7 @@ class PollViewController: FormViewController {
     func showInvalidPollAlert() {
         let alert = UIAlertController(title: "Error", message: "Can't send poll.\nFields with * are required.", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        presentViewController(alert, animated: true, completion: nil)
     }
 
     // MARK: Validation

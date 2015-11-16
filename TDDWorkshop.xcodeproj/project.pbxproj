@@ -58,6 +58,9 @@
 		51043FCBAE02051B24749F47 /* ViewControllerPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510436EDD02D0683A1C59A17 /* ViewControllerPresenting.swift */; };
 		51043FF50D487EE58AB2ECC9 /* StreamItemTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51043DF90B2B0152DF6FF46B /* StreamItemTransformer.swift */; };
 		810861B62FF9CB3D6893CE9B /* PollViewController+FormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086F77015C685EDB582D0F /* PollViewController+FormConfiguration.swift */; };
+		810861B71F0EC48F748F4ABD /* PollViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108664EF2815E24CD31586B /* PollViewControllerSpec.swift */; };
+		810866451A2E1C7800E9DE31 /* PollContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086F39CC321F715407E333 /* PollContracts.swift */; };
+		81086C7668472F534DC0F3CE /* PollManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810867FBB00ADC3DAEDCCF91 /* PollManagerFake.swift */; };
 		81DC540A880D1280C51754B0 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C13977E91D5A6246EC94A4 /* Pods.framework */; };
 		86F2B4061BFD372D00AACB4C /* AgendaItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2B4051BFD372D00AACB4C /* AgendaItemCell.swift */; };
 		94DCC8121BFA570B00ABEF01 /* Poll.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94DCC8101BFA570B00ABEF01 /* Poll.storyboard */; };
@@ -143,6 +146,9 @@
 		51043F2BE2E9D941A49D7CA8 /* UIRefreshControlFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRefreshControlFake.swift; sourceTree = "<group>"; };
 		51043F3546921619F45D7FEE /* StreamItemUploaderFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamItemUploaderFake.swift; sourceTree = "<group>"; };
 		51043F88A84283ECD6996069 /* Configurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
+		8108664EF2815E24CD31586B /* PollViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollViewControllerSpec.swift; sourceTree = "<group>"; };
+		810867FBB00ADC3DAEDCCF91 /* PollManagerFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollManagerFake.swift; sourceTree = "<group>"; };
+		81086F39CC321F715407E333 /* PollContracts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollContracts.swift; sourceTree = "<group>"; };
 		81086F77015C685EDB582D0F /* PollViewController+FormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PollViewController+FormConfiguration.swift"; sourceTree = "<group>"; };
 		86F2B4051BFD372D00AACB4C /* AgendaItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaItemCell.swift; sourceTree = "<group>"; };
 		94DCC8111BFA570B00ABEF01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = TDDWorkshop/Base.lproj/Poll.storyboard; sourceTree = SOURCE_ROOT; };
@@ -231,6 +237,7 @@
 				51043F2BE2E9D941A49D7CA8 /* UIRefreshControlFake.swift */,
 				1EDB8F9E0A67EFE8740874D4 /* AgendaProviderFake.swift */,
 				1EDB874474DA5D4CF5A3AD8B /* UITableViewFake.swift */,
+				810867FBB00ADC3DAEDCCF91 /* PollManagerFake.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -252,6 +259,8 @@
 				A1DFDFA41BF3D126007D3C33 /* PollManager.swift */,
 				510430AFBBDF3557A5D8AF14 /* PollViewController.swift */,
 				81086F77015C685EDB582D0F /* PollViewController+FormConfiguration.swift */,
+				8108664EF2815E24CD31586B /* PollViewControllerSpec.swift */,
+				81086F39CC321F715407E333 /* PollContracts.swift */,
 			);
 			path = Poll;
 			sourceTree = "<group>";
@@ -682,6 +691,7 @@
 				B27A9D49C4908E6CD130E12C /* SpeakerCollectionViewCell.swift in Sources */,
 				43FA23BF1BF8811900A5AD35 /* SpeakersCollectionViewLayout.swift in Sources */,
 				B27A9FC130EC0A542BD236B0 /* SeparatorView.swift in Sources */,
+				810866451A2E1C7800E9DE31 /* PollContracts.swift in Sources */,
 				510436B2B0F419B81E1D35CA /* Configuration.swift in Sources */,
 				51043F404C0E2D0414BAE37D /* ConfigurationFactory.swift in Sources */,
 				51043121927C1E86982B46CC /* Configurator.swift in Sources */,
@@ -711,6 +721,7 @@
 				51043C751412DCF7028CA6F7 /* PhotoStreamViewControllerSpec.swift in Sources */,
 				B27A9D82F37544CEEAC47248 /* SpeakersViewControllerSpec.swift in Sources */,
 				B27A9435A5125ABF50C02EB4 /* SpeakersCollectionViewDataSourceSpec.swift in Sources */,
+				810861B71F0EC48F748F4ABD /* PollViewControllerSpec.swift in Sources */,
 				51043605C18A362FF71BEC8E /* StreamItemDownloaderSpec.swift in Sources */,
 				51043B08EC646440A8F60810 /* ParseAdapterFake.swift in Sources */,
 				51043C19A4A903FCBA7C795E /* StreamItemUploaderSpec.swift in Sources */,
@@ -732,6 +743,7 @@
 				1EDB867C264C110BF79FE127 /* AgendaProviderFake.swift in Sources */,
 				1EDB8F92B79DBAE4AC4CB78E /* UITableViewFake.swift in Sources */,
 				1EDB8A916CF1970092D51CC8 /* AgendaProviderSpec.swift in Sources */,
+				81086C7668472F534DC0F3CE /* PollManagerFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
