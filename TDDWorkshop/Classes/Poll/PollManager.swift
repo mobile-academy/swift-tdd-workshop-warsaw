@@ -78,11 +78,11 @@ class PollBuilder {
     private var items: [String:Poll.Item] = [:]
 
     func isValid() -> Bool {
-        return self.poll().isValid()
+        return poll().isValid()
     }
 
     func poll() -> Poll {
-        return Poll(name: name, email: email, comments: comments, items: items.values.flatMap({ $0 }))
+        return Poll(name: name, email: email, comments: comments, items: items.values.flatMap { $0 })
     }
 
     // MARK: Poll building

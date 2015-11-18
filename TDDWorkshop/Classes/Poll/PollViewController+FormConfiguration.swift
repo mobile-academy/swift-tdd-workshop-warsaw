@@ -21,12 +21,7 @@ extension PollViewController {
 
     // MARK: Form configuration
 
-    func configureForm(sections: [String], validators: [ValidatorType:ValidationContext], pollBuilder: PollBuilder) {
-        configureGeneralSection(validators, pollBuilder: pollBuilder)
-        configureAgendaSections(sections, validators: validators, pollBuilder: pollBuilder)
-    }
-
-    func configureGeneralSection(validators: [ValidatorType:ValidationContext], pollBuilder: PollBuilder) {
+    func configureGeneralSection(validators: [ValidationFieldType:ValidationContext], pollBuilder: PollBuilder) {
         form +++ Section("General")
                 <<<
                 NameRow("name") {
@@ -48,7 +43,7 @@ extension PollViewController {
                     }
                 }
                 <<<
-                EmailRow("username") {
+                EmailRow("email") {
                     $0.title = "E-mail*"
                     $0.placeholder = "you@example.com"
                 }
@@ -84,7 +79,7 @@ extension PollViewController {
                 }
     }
 
-    func configureAgendaSections(sections: [String], validators: [ValidatorType:ValidationContext], pollBuilder: PollBuilder) {
+    func configureAgendaSections(sections: [String], validators: [ValidationFieldType:ValidationContext], pollBuilder: PollBuilder) {
         for (i, section) in sections.enumerate() {
             form +++ Section(section)
                     <<<

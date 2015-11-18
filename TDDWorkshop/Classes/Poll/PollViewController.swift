@@ -9,10 +9,10 @@
 import UIKit
 import Eureka
 
-enum ValidatorType {
-    case Text
-    case Comment
-    case Email
+enum ValidationFieldType: String {
+    case Text = "name"
+    case Comment = "feedback"
+    case Email = "email"
 }
 
 struct ValidationContext {
@@ -37,11 +37,12 @@ class PollViewController: FormViewController {
             return
         }
 
-        let validators = [ValidatorType.Text: ValidationContext(validator: validateText, message: "Invalid characters"),
-                          ValidatorType.Comment: ValidationContext(validator: validateComment, message: "Your comment is too short"),
-                          ValidatorType.Email: ValidationContext(validator: validateEmail, message: "Invalid email format")]
+        let validators = [ValidationFieldType.Text: ValidationContext(validator: validateText, message: "Invalid characters"),
+                          ValidationFieldType.Comment: ValidationContext(validator: validateComment, message: "Your comment is too short"),
+                          ValidationFieldType.Email: ValidationContext(validator: validateEmail, message: "Invalid email format")]
 
-        configureForm(sections, validators: validators, pollBuilder: pollBuilder)
+        configureGeneralSection(validators, pollBuilder: pollBuilder)
+        configureAgendaSections(sections, validators: validators, pollBuilder: pollBuilder)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -98,6 +99,13 @@ class PollViewController: FormViewController {
     }
 
     // MARK: Validation
+
+    // TODO: Extract and test validation logic (to make it more reusable and reliable).
+    // Hint 1: Create common Validator protocol
+    // Hint 2: Create different validators (comment, email, etc.)
+    // Hint 3: Create validators factory (remember about tests)
+    // Hint 4: To simulate input on form cell use this code: `simulateTextInput(foforRowWithType:text:)` where type is `ValidationFieldType`.
+    //          E.g.: simulateTextInput(forRowWithType: .Text, text: "fixture string")
 
     func validateComment(comment: String?) -> Bool {
         guard let comment = comment where !comment.isEmpty else {
