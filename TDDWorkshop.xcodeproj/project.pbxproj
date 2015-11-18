@@ -57,6 +57,7 @@
 		51043FA161D6333E1A439928 /* ImagePickerCreating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51043B1632D8201C3B8C5CB0 /* ImagePickerCreating.swift */; };
 		51043FCBAE02051B24749F47 /* ViewControllerPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510436EDD02D0683A1C59A17 /* ViewControllerPresenting.swift */; };
 		51043FF50D487EE58AB2ECC9 /* StreamItemTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51043DF90B2B0152DF6FF46B /* StreamItemTransformer.swift */; };
+		810861B62FF9CB3D6893CE9B /* PollViewController+FormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086F77015C685EDB582D0F /* PollViewController+FormConfiguration.swift */; };
 		81DC540A880D1280C51754B0 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C13977E91D5A6246EC94A4 /* Pods.framework */; };
 		86F2B4061BFD372D00AACB4C /* AgendaItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2B4051BFD372D00AACB4C /* AgendaItemCell.swift */; };
 		94DCC8121BFA570B00ABEF01 /* Poll.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94DCC8101BFA570B00ABEF01 /* Poll.storyboard */; };
@@ -142,6 +143,7 @@
 		51043F2BE2E9D941A49D7CA8 /* UIRefreshControlFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRefreshControlFake.swift; sourceTree = "<group>"; };
 		51043F3546921619F45D7FEE /* StreamItemUploaderFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamItemUploaderFake.swift; sourceTree = "<group>"; };
 		51043F88A84283ECD6996069 /* Configurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
+		81086F77015C685EDB582D0F /* PollViewController+FormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PollViewController+FormConfiguration.swift"; sourceTree = "<group>"; };
 		86F2B4051BFD372D00AACB4C /* AgendaItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaItemCell.swift; sourceTree = "<group>"; };
 		94DCC8111BFA570B00ABEF01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = TDDWorkshop/Base.lproj/Poll.storyboard; sourceTree = SOURCE_ROOT; };
 		94DCC8131BFA571A00ABEF01 /* Agenda.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Agenda.storyboard; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				A1DFDFA41BF3D126007D3C33 /* PollManager.swift */,
 				510430AFBBDF3557A5D8AF14 /* PollViewController.swift */,
+				81086F77015C685EDB582D0F /* PollViewController+FormConfiguration.swift */,
 			);
 			path = Poll;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				51043F20539F46ABAE5CA019 /* StreamItemViewController.swift in Sources */,
 				1EDB8BD9E433436CEBF83EAE /* AgendaItem.swift in Sources */,
 				1EDB8E6D471D2514A3B408C7 /* AgendaProvider.swift in Sources */,
+				810861B62FF9CB3D6893CE9B /* PollViewController+FormConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
