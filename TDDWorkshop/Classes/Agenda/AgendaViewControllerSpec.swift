@@ -51,15 +51,96 @@ class AgendaViewControllerSpec: QuickSpec {
 
             beforeEach {
                 // Arrange
-
+                agendaProviderFake = AgendaProviderFake()
+                sut.agendaProvider = agendaProviderFake
             }
 
-            // Un-exlude
-            xit("should reload agenda") {
+            it("should reload agenda") {
                 // Act
+                sut.viewDidLoad()
 
                 // Assert
-
+                expect(agendaProviderFake.reloadAgendaCalled).to(beTrue())
+            }
+            
+            describe("agenda reloading completes") {
+            
+                var tableViewFake: UITableViewFake!
+                
+                beforeEach {
+                    // Arrange
+                    tableViewFake = UITableViewFake()
+                    sut.tableView = tableViewFake
+                }
+                
+                it("should reload table view") {
+                    // Act
+                    sut.viewDidLoad()
+                    
+                    // Simulate
+                    let stubItems:[AgendaItem] = []
+                    agendaProviderFake.simulateSuccessfulReload(stubItems)
+                    
+                    // Assert
+                    expect(tableViewFake.reloadDataCalled) == true
+                }
+            }
+        }
+        
+        describe("table view") {
+            var tableView: UITableView!
+            var agendaProviderFake: AgendaProviderFake!
+            
+            beforeEach {
+                tableView = sut.tableView
+                
+                agendaProviderFake = AgendaProviderFake()
+                sut.agendaProvider = agendaProviderFake
+            }
+            
+            it("should have 1 section") {
+                expect(tableView.numberOfSections) == 1
+            }
+            
+            describe("number of rows") {
+                
+                context("when agenda is empty") {
+                    
+                    beforeEach {
+                        agendaProviderFake.agendaItems = []
+                    }
+                    
+                    it("should have 0 rows") {
+                        expect(tableView.dataSource!.tableView(tableView, numberOfRowsInSection: 0)) == 0
+                    }
+                }
+                
+                context("when agenda has 2 items") {
+                    
+                    beforeEach {
+                        agendaProviderFake.agendaItems = [
+                            AgendaItem(time: "Test Time 1", name: "Test Name 1"),
+                            AgendaItem(time: "Test Time 2", name: "Test Name 2")
+                        ]
+                    }
+                    
+                    it("should have 2 rows") {
+                        expect(tableView.dataSource!.tableView(tableView, numberOfRowsInSection: 0)) == 2
+                    }
+                    
+                    it("should return cell for each item") {
+                        
+                        for (row, agendaItem) in agendaProviderFake.agendaItems.enumerate() {
+                            
+                            let indexPath = NSIndexPath(forRow: row, inSection: 0)
+                            
+                            let agendaCell = tableView.dataSource!.tableView(tableView, cellForRowAtIndexPath: indexPath) as! AgendaItemCell
+                            
+                            expect(agendaCell.nameLabel.text) == agendaItem.name
+                            expect(agendaCell.timeLabel.text) == agendaItem.time
+                        }
+                    }
+                }
             }
         }
     }

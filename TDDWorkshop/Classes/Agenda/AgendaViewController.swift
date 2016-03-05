@@ -26,17 +26,26 @@ class AgendaViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: reload agenda
+        // reload agenda
+        self.agendaProvider.reloadAgenda { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
 
     // MARK: Table view
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0;
+        return self.agendaProvider.agendaItems.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(AgendaItemCellIdentifier, forIndexPath: indexPath) as! AgendaItemCell
-        return cell;
+        
+        let agendaItem = self.agendaProvider.agendaItems[indexPath.row]
+        
+        cell.nameLabel.text = agendaItem.name
+        cell.timeLabel.text = agendaItem.time
+        
+        return cell
     }
 }
